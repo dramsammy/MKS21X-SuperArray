@@ -1,6 +1,6 @@
 public class Driver{
   public static void main(String[] args) {
-        System.out.println("----------------- Testing Initialization -----------------");
+    System.out.println("----------------- Testing Initialization -----------------");
     SuperArray x = new SuperArray(); //Initialized new SuperArray without values
     System.out.println(x); // should return null from having nothing inside
     System.out.println(x.size()); // should return size - 0
@@ -25,6 +25,13 @@ public class Driver{
     System.out.println("----------------- Testing Debug Methods -----------------");
     x.clear(); //Empties SuperArray
     System.out.println(x.toStringDebug()); //should return [null, null, null, null, null, null, null, null, null, null]
-    
+    System.out.println("----------------- Testing More than one instances -----------------");
+    SuperArray y = new SuperArray();
+    for (int i = 10; i != 0; i--){
+      y.add("loop");
+    }
+    System.out.println(x); // should return null
+    System.out.println(y); // should return loop ten times
+
   }
 }
