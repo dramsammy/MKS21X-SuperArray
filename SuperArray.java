@@ -12,23 +12,23 @@ public class SuperArray{
     return size;
   }
   public boolean isEmpty(){
-    return size == 0;
+    return size() == 0;
   }
   public boolean add(String element){
-    if (size == data.length){
+    if (size() == data.length){
       resize();
       data[size] = element;
       size++;
     }
-    if (size < data.length){
+    if (size() < data.length){
       data[size] = element;
       size++;
     }
     return true;
   }
   public String toString(){
-    if (size == 0){
-      return null;
+    if (size() == 0){
+      return "[]";
     }
     String toStringTemp = "[";
     for (int i = 0; i < size - 1; i++){
@@ -47,13 +47,13 @@ public class SuperArray{
   }
   public String get(int index){
     if (index < 0 || index >= size()){
-      return null;
+      return "Error - Index is out of range";
     }
     return data[index];
   }
   public String set(int index, String element){
     if (index < 0 || index >= size()){
-      return null;
+      return "Error - index out of range";
     }
     String returnValue = data[index];
     data[index] = element;
@@ -91,16 +91,24 @@ public class SuperArray{
     return -1;
   }
   public void add(int index, String element){
-    add(element);
-    String[] dataTemp = new String[size];
-    dataTemp = data;
-    for(int i = index + 1; i < size(); i++){
-      dataTemp[i] = data[i - 1];
+    if (index >= size()){
+      System.out.println("Error - Index is out of range");
     }
-    dataTemp[index] = element;
-    data = dataTemp;
+    else if (index < size()){
+      add(element);
+      String[] dataTemp = new String[size];
+      dataTemp = data;
+      for(int i = index + 1; i < size(); i++){
+        dataTemp[i] = data[i - 1];
+      }
+      dataTemp[index] = element;
+      data = dataTemp;
+    }
   }
   public String remove(int index){
+    if (index >= size()){
+      System.out.println("Error - Index is out of range");
+    }
     String returnValue = data[index];
     for (int i = index + 1; i < size(); i++){
       data[i - 1] = data[i];
