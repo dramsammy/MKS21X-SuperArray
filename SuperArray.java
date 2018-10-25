@@ -15,6 +15,11 @@ public class SuperArray{
     return size == 0;
   }
   public boolean add(String element){
+    if (size == data.length){
+      resize();
+      data[size] = element;
+      size++;
+    }
     if (size < data.length){
       data[size] = element;
       size++;
@@ -54,19 +59,62 @@ public class SuperArray{
     data[index] = element;
     return returnValue;
   }
-
-
-  // public boolean booleanAdd(String element){
-  //   if (data[size-1] != null){
-  //     String[] dataTemp = new String[size + 1];
-  //     for (int i = 0; i < data.length(); i++){
-  //       dataTemp[i] = data[i];
-  //     }
-  //     dataTemp[size] = element;
-  //     size++;
-  //     data = dataTemp;
-  //     }
-  //   return true;
-  //   }
-
+  private void resize(){
+    String[] dataTemp = new String[size + 1];
+      for (int i = 0; i < data.length; i++){
+      dataTemp[i] = data[i];
+     }
+    data = dataTemp;
+    }
+  public boolean contains(String target){
+    for (int i = 0; i < size(); i++){
+      if (data[i].equals(target)){
+        return true;
+      }
   }
+  return false;
+  }
+  public int indexOf(String target){
+    for (int i = 0; i < size(); i++){
+      if (data[i].equals(target)){
+        return i;
+      }
+  }
+  return -1;
+}
+  public int lastindexOf(String target){
+    for (int i = size() - 1; i != 0; i--){
+      if (data[i].equals(target)){
+        return i;
+      }
+      }
+    return -1;
+  }
+  public void add(int index, String element){
+    add(element);
+    String[] dataTemp = new String[size];
+    dataTemp = data;
+    for(int i = index + 1; i < size(); i++){
+      dataTemp[i] = data[i - 1];
+    }
+    dataTemp[index] = element;
+    data = dataTemp;
+  }
+  public String remove(int index){
+    String returnValue = data[index];
+    for (int i = index + 1; i < size(); i++){
+      data[i - 1] = data[i];
+    }
+    size--;
+    return returnValue;
+  }
+  public boolean remove(String element){
+    for (int i = 0; i < size(); i++){
+      if (data[i] == element){
+        remove(i);
+        return true;
+      }
+    }
+    return false;
+  }
+}

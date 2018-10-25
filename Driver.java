@@ -32,6 +32,55 @@ public class Driver{
     }
     System.out.println(x); // should return null
     System.out.println(y); // should return loop ten times
-
+    System.out.println("----------------- Testing Resize -----------------");
+    x.clear();
+    for (int i = 10; i != 0; i--){
+      x.add("loop");
+    }
+    x.add("Resized");
+    System.out.println(x); // Should print 11 values
+    for (int i = 10; i != 0; i--){
+      x.add("loop Resized");
+    }
+    System.out.println(x); // Should print 21 values
+    System.out.println(x.size()); // Should be 21
+    x.clear();
+    x.add("Testing if Add still works");
+    System.out.println(x); // should return 1 value
+    System.out.println(x.size()); // Should be 1
+    x.clear();
+    System.out.println("----------------- Testing Phase 3 Methods -----------------");
+    x.add("a");
+    x.add("b");
+    x.add("c");
+    System.out.println(x);
+    System.out.println(x.contains("c")); // Should return true
+    x.add("c");
+    System.out.println(x.indexOf("c")); // Should be 2
+    System.out.println(x.lastindexOf("c")); // Should be 3
+    System.out.println(x.size()); // Should be 4
+    System.out.println(x.indexOf("d")); // Should be -1
+    System.out.println(x.lastindexOf("d")); // Should be -1
+    x.clear();
+    x.add("1");
+    x.add("2");
+    x.add("3");
+    x.add(2, "4");
+    System.out.println(x);
+    x.remove(0);
+    x.remove(1);
+    System.out.println(x);
+    System.out.println(x.size());
+    x.remove(1);
+    System.out.println(x);
+    x.remove(0);
+    System.out.println(x);
+    x.clear();
+    x.add("Test");
+    x.add("Remove me!");
+    x.add("Test");
+    System.out.println(x);
+    x.remove("Remove me!");
+    System.out.println(x);
   }
 }
