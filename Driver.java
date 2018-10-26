@@ -86,9 +86,9 @@ public class Driver{
     x.remove(4); // Error - Index is out of range
     System.out.println(x); // Should result in [Test, Test]
     System.out.println(x.size()); // Should be 2
-    for (int i = 0; i < 2; i ++){
-      x.remove(i);
-    }
+    x.remove(0);
+    x.remove(0);
+
     System.out.println(x); // Should result in []
   }
 }

@@ -106,16 +106,20 @@ public class SuperArray{
     }
   }
   public String remove(int index){
+    String returnValue = "";
     if (index >= size()){
       System.out.println("Error - Index is out of range");
+
     }
-    String returnValue = data[index];
-    for (int i = index + 1; i < size(); i++){
-      data[i - 1] = data[i];
-    }
+      else if (index < size()){
+        returnValue = data[index];
+        for (int i = index + 1; i < size(); i++){
+          data[i - 1] = data[i];
+        }
     size--;
-    return returnValue;
   }
+  return returnValue;
+}
   public boolean remove(String element){
     for (int i = 0; i < size(); i++){
       if (data[i] == element){
