@@ -4,6 +4,10 @@ public class SuperArray{
   public SuperArray(){
     data = new String[10];
   }
+  public SuperArray(int startingCapacity){
+    size = startingCapacity;
+    data = new String[10];
+  }
   public void clear(){
     size = 0;
     data = new String[10];
@@ -47,13 +51,13 @@ public class SuperArray{
   }
   public String get(int index){
     if (index < 0 || index >= size()){
-      return "Error - Index is out of range";
+      throw new IndexOutOfBoundsException();
     }
     return data[index];
   }
   public String set(int index, String element){
     if (index < 0 || index >= size()){
-      return "Error - index out of range";
+      throw new IndexOutOfBoundsException();
     }
     String returnValue = data[index];
     data[index] = element;
@@ -92,7 +96,7 @@ public class SuperArray{
   }
   public void add(int index, String element){
     if (index >= size()){
-      System.out.println("Error - Index is out of range");
+      throw new IndexOutOfBoundsException();
     }
     else if (index < size()){
       add(element);
@@ -108,7 +112,7 @@ public class SuperArray{
   public String remove(int index){
     String returnValue = "";
     if (index >= size()){
-      System.out.println("Error - Index is out of range");
+      throw new IndexOutOfBoundsException();
 
     }
       else if (index < size()){
