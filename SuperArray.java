@@ -86,8 +86,8 @@ public class SuperArray{
   }
   return -1;
 }
-  public int lastindexOf(String target){
-    for (int i = size() - 1; i != 0; i--){
+  public int lastIndexOf(String target){
+    for (int i = size() - 1; i != -1; i--){
       if (data[i].equals(target)){
         return i;
       }
@@ -95,8 +95,11 @@ public class SuperArray{
     return -1;
   }
   public void add(int index, String element){
-    if (index >= size()){
+    if (index < 0 || index > size()){
       throw new IndexOutOfBoundsException();
+    }
+    else if (index == size()){
+      add(element);
     }
     else if (index < size()){
       add(element);
@@ -111,7 +114,7 @@ public class SuperArray{
   }
   public String remove(int index){
     String returnValue = "";
-    if (index >= size()){
+    if (index < 0 || index > size()){
       throw new IndexOutOfBoundsException();
 
     }
